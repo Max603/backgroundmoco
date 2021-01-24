@@ -10,16 +10,16 @@
         android:name="com.mocows.appworkshop.ui.home.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
-
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.mocows.appworkshop.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
-
+        android:id="@+id/nav_services"
+        android:name="com.mocows.appworkshop.ui.services.MyServicesFragment"
+        android:label="@string/menu_services"
+        tools:layout="@layout/fragment_my_services" />
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.mocows.appworkshop.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_work"
+        android:name="com.mocows.appworkshop.ui.work.fragement_work"
+        android:label="@string/menu_work"
+        tools:layout="@layout/fragment_work" />
+
+
 </navigation>

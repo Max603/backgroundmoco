@@ -5,28 +5,29 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.work.fragement_work">
+    tools:context=".ui.services.">
 
     <!-- TODO: Update blank fragment layout -->
+
     <Button
-        android:id="@+id/work_manager_button"
+        android:id="@+id/myservice_connection_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ich bin in Qurantäne"
+        android:text="Connect"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.767" />
+        app:layout_constraintVertical_bias="0.841" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="212dp"
-        android:text="Falls Sie positiv auf COVID-19 getestet wurden, können Sie den Button betätigen und bekommen alle 12 Stunden eine Benachrichtigung wie lange Sie noch in Qurantäne sind."
+        android:text="Falls Sie bei Ihrem Einkauf Hilfe benötigen, können Sie den Button betätigen und eine Person wird den Einkauf für Sie übernehmen."
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/work_manager_button"
+        app:layout_constraintBottom_toTopOf="@+id/myservice_connection_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

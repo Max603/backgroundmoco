@@ -7,14 +7,15 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.work.OneTimeWorkRequestBuilder
-import androidx.work.PeriodicWorkRequestBuilder
-import androidx.work.WorkManager
 import com.mocows.appworkshop.R
-import java.util.concurrent.TimeUnit
 
 
 class fragement_work : Fragment() {
+    companion object{
+        /**
+         * TODO: Erstellung einer lateinit Variable um den WorkManager aus einer anderen Klasse beenden zu können
+         */
+    }
     private lateinit var workViewModel: WorkViewModel
 
     override fun onCreateView(
@@ -26,9 +27,15 @@ class fragement_work : Fragment() {
             ViewModelProvider(this).get(WorkViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_work, container, false)
 
-
-
-
+        /**
+         * TODO: Erstellen der Aufgaben für den Periodischen und den Einmaligen Aufruf des WorkManagers
+         */
+        val btnonetime =root.findViewById<Button>(R.id.work_manager_button)
+        btnonetime.setOnClickListener {
+            /**
+             * TODO: Erstellen der Instanzen für den Periodischen und den Einmaligen Aufruf des WorkManagers
+             */
+        }
 
         return root
 
