@@ -12,7 +12,7 @@ Thread {
 Thread {
 	//do actions
 	this.activity?.runOnUiThread(){
-        //do actions on ui thread because ui elements can only be edited in Main/Ui thread
+        //does actions on Ui-Thread u neeed it because Ui-elements can only be edited in Main/Ui-Thread
         }
 }.start()
 ```
