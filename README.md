@@ -22,7 +22,7 @@ Thread {
 ```java
 var reque = URL("https://services7.arcgis.com/mOBPykOjAyBO2ZKk/arcgis/rest/services/RKI_Landkreisdaten/FeatureServer/0/query?where=1=1&outFields=GEN&returnGeometry=false&f=json") //request url
 val conn: HttpURLConnection = reque.openConnection() as HttpURLConnection // create a connection
-val data = conn.inputStream.bufferedReader().use(BufferedReader::readText) //read recevied bytes for request
+val data = conn.inputStream.bufferedReader().use(BufferedReader::readText) //read recevied bytes from request
 
 
  //loop at all objects in features
