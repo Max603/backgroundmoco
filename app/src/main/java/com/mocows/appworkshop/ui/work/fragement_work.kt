@@ -31,11 +31,19 @@ class fragement_work : Fragment() {
          * TODO: Erstellen der Aufgaben für den Periodischen und den Einmaligen Aufruf des WorkManagers
          */
         val btnonetime =root.findViewById<Button>(R.id.work_manager_button)
+        val cancelbutton =root.findViewById<Button>(R.id.work_manager_button)
         btnonetime.setOnClickListener {
             /**
              * TODO: Erstellen der Instanzen für den Periodischen und den Einmaligen Aufruf des WorkManagers
              */
         }
+
+        cancelbutton.setOnClickListener {
+            /**
+             * TODO: Erstellen der WorkManager Cancel Methode
+             */
+        }
+
 
         return root
 

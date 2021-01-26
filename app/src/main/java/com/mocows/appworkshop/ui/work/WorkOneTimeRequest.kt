@@ -13,9 +13,6 @@ class WorkOneTimeRequest (context: Context, workerParams: WorkerParameters) : Wo
     companion object{
         private const val WORK_MANAGER_PERIODIC_CHANNEL_ID= "CHANNEL_ID_WORK_MANAGER_PERIODICAL"
         private const val WORK_MANAGER_PERIODICAL_CHANNEL_NAME="WORK_MANAGER_PERIODICAL"
-        /**
-         * TODO: Einfügen der Variablen für die Tage in Quarantäne und einem Counter für den Durchlauf
-         */
     }
     override fun doWork(): Result {
         /**

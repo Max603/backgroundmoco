@@ -27,7 +27,7 @@ class MyServicesFragment : Fragment() {
         conbtn.setOnClickListener() {
 
             /**
-             * TODO: Erstellung eines Intents und Starten des Forground Services
+             * TODO: Erstellung eines Intents und Starten des Forground Services und Background Service
              **/
         }
 
