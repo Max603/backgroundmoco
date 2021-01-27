@@ -87,6 +87,18 @@ val cases = ele.getString("cases7_per_100k_txt") // get cases
  startForeground(ID, notification)
 ```
 
+## Background Service
+
+### Intent
+```java
+      val startIntent =Intent(this.context,MyService::class.java)
+```
+
+### Starten des Background Services
+```java
+  ContextCompat.startForegroundService(root.context,startIntent)
+```
+
 ##Verbindung zum Server
 ```java
 	//IP-Adresse des Servers in unserem Fall die des eigenen Geräts
@@ -100,23 +112,24 @@ val cases = ele.getString("cases7_per_100k_txt") // get cases
  ```java
 
  CoroutineScope(Dispatchers.IO).launch {
-        //    delay(6000)
+        CoroutineScope(Dispatchers.IO).launch {
             val mRun = true;
             var charsRead = 0
-            val buffer = CharArray(BUFFERSIZE)
+            var buffer = CharArray(BUFFERSIZE)
             Log.e("TCP Client", "C: Connecting...");
           //Erstellen des Socket mit der im Companion Objekt angelegten IP und dem Port
             val socket = Socket(SERVER, PORT);
             while (mRun) {
                 //Einlesen der gesendeten Daten vom C TCP-Server
-                val mBufferIn = BufferedReader(InputStreamReader(socket.getInputStream(), StandardCharsets.US_ASCII));
+                val mBufferIn = BufferedReader(InputStreamReader(socket.getInputStream(), StandardCharsets.UTF_8));
 
                 charsRead = mBufferIn.read(buffer)
-
+                if(charsRead<0) continue
                 //Umwandeln der empfangenen Daten in einen String
                 val mServerMessage: String? = String(buffer).substring(0, charsRead)
+                buffer= CharArray(BUFFERSIZE)
                 if (mServerMessage != null)
-                    GlobalScope.launch {
+                    CoroutineScope(Dispatchers.IO).launch {
                         //Ausführen der Notification das ein Helfer gefunden wurde, mit übergabe des Namens
                         shownote(mServerMessage)
                         Log.i("connectserver", mServerMessage)
