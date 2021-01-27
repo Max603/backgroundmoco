@@ -99,7 +99,7 @@ val cases = ele.getString("cases7_per_100k_txt") // get cases
   ContextCompat.startForegroundService(root.context,startIntent)
 ```
 
-##Verbindung zum Server
+## Verbindung zum Server
 ```java
 	//IP-Adresse des Servers in unserem Fall die des eigenen Geräts
         private val SERVER = "t45xvxe1amipu7ef.myfritz.net"
