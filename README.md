@@ -180,4 +180,63 @@ workmanager.enqueue(request)
  ```java
 workmanager.cancelAllWork()
  ```
+# Alarm Manger
+
+### Get Alarm Manager 
+
+```java
+val alarmManager = root.context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+```
+
+### Create a BroadcastReceiver
+
+```java
+class Alarm :BroadcastReceiver() //create a Class as a BroadcastReceiver
+{
+
+	override fun onReceive(context: Context?, intent: Intent?) {  // get called when BroadcastReceiver Receives a Intent Broadcast
+	
+		//do some action
+	}
+	
+}
+```
+
+### Add BroadcastReceiver to AndroidManifest
+
+
+```xml
+<application>
+	.
+	.
+	.
+ <receiver android:name=".ui.alarm.Alarm"/>  
+	.
+	.
+	.
+ <activity ... >
+	.
+	.
+	.
+ </activity>
+</application>
+
+```
+
+### Create an Intent and Pending Intent
+
+```java
+ val intent = Intent(root.context, Alarm::class.java)    //create an intent for the BroadcastReceiver Class
+ val pendingIntent = PendingIntent.getBroadcast(         //create a Pending Intent (Broadcast Intent ) so the AlarmManager can execute my BroadcastReceiver
+     root.context.applicationContext, 234, intent, 0
+ )
+```
+
+### Create an Alarm of Type RTC_WAKEUP
+
+AlarmManager.RTC_WAKEUP will trigger the alarm according to the time of the clock and will wake up the device when it goes off.
+
+```java
+alarmManager[AlarmManager.RTC_WAKEUP, System.currentTimeMillis() +  1000 ] = pendingIntent  //Alarm execuetes Pending Intent in 1000 milli second wich means 1 second from now
+```
 
