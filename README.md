@@ -210,7 +210,7 @@ class Alarm :BroadcastReceiver() //create a Class as a BroadcastReceiver
 	.
 	.
 	.
- <receiver android:name=".ui.alarm.Alarm"/>  
+ <receiver android:name="PATH.Alarm"/>  
 	.
 	.
 	.
