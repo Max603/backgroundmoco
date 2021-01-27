@@ -147,6 +147,11 @@ ID++
 ```
 
 # WorkManager
+## App Gradle
+```java
+def work_version= "2.3.4"
+implementation "androidx.work:work-runtime-ktx:$work_version"
+```
 ### Lateint Variable workmanager
 ```java
 lateinit var workmanager :WorkManager
