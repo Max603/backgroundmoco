@@ -17,7 +17,7 @@ Thread {
 }.start()
 ```
 # Corona Api
-## Get ALL Locations
+### Get ALL Locations
 ```java
 var reque = URL("https://services7.arcgis.com/mOBPykOjAyBO2ZKk/arcgis/rest/services/RKI_Landkreisdaten/FeatureServer/0/query?where=1=1&outFields=GEN&returnGeometry=false&f=json") //request url
 val conn: HttpURLConnection = reque.openConnection() as HttpURLConnection // create a connection
@@ -35,7 +35,7 @@ val data = conn.inputStream.bufferedReader().use(BufferedReader::readText) //rea
 
 ```
 
-## Get Cases per 100k the last 7 days at a location
+### Get Cases per 100k the last 7 days at a location
 
 ```java
 
