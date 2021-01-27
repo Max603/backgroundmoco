@@ -222,6 +222,7 @@ class Alarm :BroadcastReceiver() //create a Class as a BroadcastReceiver
 </application>
 
 ```
+Replace PATH with the path to your BroadcastReceiver Class
 
 ### Create an Intent and Pending Intent
 
@@ -234,9 +235,8 @@ class Alarm :BroadcastReceiver() //create a Class as a BroadcastReceiver
 
 ### Create an Alarm of Type RTC_WAKEUP
 
-AlarmManager.RTC_WAKEUP will trigger the alarm according to the time of the clock and will wake up the device when it goes off.
-
 ```java
 alarmManager[AlarmManager.RTC_WAKEUP, System.currentTimeMillis() +  1000 ] = pendingIntent  //Alarm execuetes Pending Intent in 1000 milli second wich means 1 second from now
 ```
 
+AlarmManager.RTC_WAKEUP will trigger the alarm according to the time of the clock and will wake up the device when it goes off.
