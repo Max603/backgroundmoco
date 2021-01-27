@@ -29,6 +29,9 @@ class ThreadFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_thread, container, false)
 
 
+
+
+
         return root
     }
 }
