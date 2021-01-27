@@ -53,7 +53,7 @@ val cases = ele.getString("cases7_per_100k_txt") // get cases
 
 
 # Service
-## Android Manifest
+### Android Manifest
 ```java
 
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
@@ -64,30 +64,30 @@ val cases = ele.getString("cases7_per_100k_txt") // get cases
             android:exported="false"></service>
 ```
 
-## App Gradle
+### App Gradle
 ```java
 
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9'
     
 ```
-
-## Intetent 
+## Forground Service
+### Intetent 
 ```java
  val startIntent =Intent(this.context,MyService::class.java)
 
 ```
 
-## Erstellen des Fordergrund Services
+### Erstellen des Fordergrund Services
 ```java
 	ContextCompat.startForegroundService(root.context,startIntent)
 ```
 
-## Benachrichtigen des Users das ein Fordergrund Service gestartet wurde
+### Benachrichtigen des Users das ein Fordergrund Service gestartet wurde
 ```java
  startForeground(ID, notification)
 ```
 
-# Verbindung zum Server
+##Verbindung zum Server
 ```java
 	//IP-Adresse des Servers in unserem Fall die des eigenen Geräts
         private val SERVER = "t45xvxe1amipu7ef.myfritz.net"
@@ -96,7 +96,7 @@ val cases = ele.getString("cases7_per_100k_txt") // get cases
         private const val PORT = 8888
 ```
 
-# Coroutine zum Verbinden mit dem Server
+## Coroutine zum Verbinden mit dem Server
  ```java
 
  CoroutineScope(Dispatchers.IO).launch {
@@ -127,7 +127,7 @@ val cases = ele.getString("cases7_per_100k_txt") // get cases
         }
 ```
 
-# User Benachrichtigung das ein Helfer gefunden wurde
+## User Benachrichtigung das ein Helfer gefunden wurde
 ```java
      notify(ID, builder.build())
      ID++
