@@ -38,7 +38,7 @@ dependencies {
      */
 
     /**
-     *TODO: Implementierung des WorkManagers und der Cour
+     *TODO: Implementierung des WorkManagers
      **/
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
