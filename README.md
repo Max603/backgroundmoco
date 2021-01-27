@@ -52,6 +52,84 @@ val cases = ele.getString("cases7_per_100k_txt") // get cases
 ```
 
 
+# Service
+## Android Manifest
+```java
 
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+	  <service
+            android:name=".ui.myservices.MyService"
+            android:enabled="true"
+            android:exported="false"></service>
+```
+
+## App Gradle
+```java
+
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9'
+    
+```
+
+## Intetent 
+```java
+ val startIntent =Intent(this.context,MyService::class.java)
+
+```
+
+## Erstellen des Fordergrund Services
+```java
+	ContextCompat.startForegroundService(root.context,startIntent)
+```
+
+## Benachrichtigen des Users das ein Fordergrund Service gestartet wurde
+```java
+ startForeground(ID, notification)
+```
+
+# Verbindung zum Server
+```java
+	//IP-Adresse des Servers in unserem Fall die des eigenen Geräts
+        private val SERVER = "t45xvxe1amipu7ef.myfritz.net"
+
+        //Port auf welchem der Server lauscht
+        private const val PORT = 8888
+```
+
+# Coroutine zum Verbinden mit dem Server
+ ```java
+
+ CoroutineScope(Dispatchers.IO).launch {
+        //    delay(6000)
+            val mRun = true;
+            var charsRead = 0
+            val buffer = CharArray(BUFFERSIZE)
+            Log.e("TCP Client", "C: Connecting...");
+          //Erstellen des Socket mit der im Companion Objekt angelegten IP und dem Port
+            val socket = Socket(SERVER, PORT);
+            while (mRun) {
+                //Einlesen der gesendeten Daten vom C TCP-Server
+                val mBufferIn = BufferedReader(InputStreamReader(socket.getInputStream(), StandardCharsets.US_ASCII));
+
+                charsRead = mBufferIn.read(buffer)
+
+                //Umwandeln der empfangenen Daten in einen String
+                val mServerMessage: String? = String(buffer).substring(0, charsRead)
+                if (mServerMessage != null)
+                    GlobalScope.launch {
+                        //Ausführen der Notification das ein Helfer gefunden wurde, mit übergabe des Namens
+                        shownote(mServerMessage)
+                        Log.i("connectserver", mServerMessage)
+                    }
+
+            }
+
+        }
+```
+
+# User Benachrichtigung das ein Helfer gefunden wurde
+```java
+     notify(ID, builder.build())
+```
 
 
