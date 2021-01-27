@@ -11,29 +11,32 @@ import com.mocows.appworkshop.R
 
 class WorkOneTimeRequest (context: Context, workerParams: WorkerParameters) : Worker(context,workerParams){
     companion object{
-        private const val WORK_MANAGER_PERIODIC_CHANNEL_ID= "CHANNEL_ID_WORK_MANAGER_PERIODICAL"
-        private const val WORK_MANAGER_PERIODICAL_CHANNEL_NAME="WORK_MANAGER_PERIODICAL"
+        private const val WORK_MANAGER_CHANNEL_ID="CHANNEL_ID_WORK_MANAGER"
+        private const val WORK_MANAGER_CHANNEL_NAME="WORK_MANAGER"
     }
     override fun doWork(): Result {
         /**
-         * TODO: Erstellen der Notification für den Qurantänestatus
+         * TODO: Erstellen der Benachrichtung das sich der Benutzer jetzt in Quarantäne befindet
          */
+
         return Result.success()
     }
-    fun createNotification(title:String,description:String) {
+
+    fun createNotification(title:String,description:String){
 
         var notificationManager = applicationContext.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val notificationChannel = NotificationChannel(WORK_MANAGER_PERIODIC_CHANNEL_ID, WORK_MANAGER_PERIODICAL_CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            val notificationChannel = NotificationChannel(WORK_MANAGER_CHANNEL_ID, WORK_MANAGER_CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT)
             notificationManager.createNotificationChannel(notificationChannel)
         }
 
-        val notificationBuilder = NotificationCompat.Builder(applicationContext, WORK_MANAGER_PERIODIC_CHANNEL_ID)
+        val notificationBuilder= NotificationCompat.Builder(applicationContext, WORK_MANAGER_CHANNEL_ID)
             .setContentTitle(title)
             .setContentText(description)
             .setSmallIcon(R.drawable.ic_menu_work)
+            .setAutoCancel(true)
 
-        notificationManager.notify(2, notificationBuilder.build())
+        notificationManager.notify(1,notificationBuilder.build())
     }
 }

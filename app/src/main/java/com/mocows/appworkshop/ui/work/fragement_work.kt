@@ -7,14 +7,20 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.work.Constraints
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkManager
 import com.mocows.appworkshop.R
+import java.util.concurrent.TimeUnit
 
 
 class fragement_work : Fragment() {
     companion object{
         /**
-         * TODO: Erstellung einer lateinit Variable um den WorkManager aus einer anderen Klasse beenden zu können
+         * TODO: Erstellen einer lateint Variable
          */
+
     }
     private lateinit var workViewModel: WorkViewModel
 
@@ -27,20 +33,26 @@ class fragement_work : Fragment() {
             ViewModelProvider(this).get(WorkViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_work, container, false)
 
+
         /**
-         * TODO: Erstellen der Aufgaben für den Periodischen und den Einmaligen Aufruf des WorkManagers
+         *TODO: Erstellen der Requests für den OneTimeWorker und Periodical Worker
          */
+
+        /**
+         * TODO: Erstellen der WorkManager Instanz
+         */
+
         val btnonetime =root.findViewById<Button>(R.id.work_manager_button)
-        val cancelbutton =root.findViewById<Button>(R.id.work_manager_button)
+        val cancelbutton =root.findViewById<Button>(R.id.workmanagercancel_button)
         btnonetime.setOnClickListener {
             /**
-             * TODO: Erstellen der Instanzen für den Periodischen und den Einmaligen Aufruf des WorkManagers
+             * TODO: Requests in die Warteschlange hinzufügen
              */
         }
 
         cancelbutton.setOnClickListener {
             /**
-             * TODO: Erstellen der WorkManager Cancel Methode
+             * TODO: Beenden des Periodischen Events
              */
         }
 
