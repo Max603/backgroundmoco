@@ -142,27 +142,37 @@ val cases = ele.getString("cases7_per_100k_txt") // get cases
 
 ## User Benachrichtigung das ein Helfer gefunden wurde
 ```java
-     notify(ID, builder.build())
-     ID++
+notify(ID, builder.build()
+ID++
 ```
 
 # WorkManager
 ### Lateint Variable workmanager
 ```java
-    lateinit var workmanager :WorkManager
+lateinit var workmanager :WorkManager
 ```
 ### Constraints der das Laden der Batterie benötigt
 ``` java
-    val constraints= Constraints.Builder().setRequiresCharging(true).build()
+val constraints= Constraints.Builder().setRequiresCharging(true).build()
 ```
 ## OneTimeRequest
 ```java
- val request= OneTimeWorkRequestBuilder<WorkOneTimeRequest>().build()
+val request= OneTimeWorkRequestBuilder<WorkOneTimeRequest>().build()
 ```
 ## PeriodicalWorkRequest
 ```java
 val request2= PeriodicWorkRequestBuilder<WorkPeriodical>(15,TimeUnit.MINUTES).build()
 ```
 ## Instance des WorkManagers erstellen
+```java
+workmanager=WorkManager.getInstance(root.context)
 ```
+## Request in Warteschlange hinzufügen
+```java
+workmanager.enqueue(request)
+```
+ ## Cancel Work Manager
+ ```java
+workmanager.cancelAllWork()
+ ```
 
