@@ -146,4 +146,23 @@ val cases = ele.getString("cases7_per_100k_txt") // get cases
      ID++
 ```
 
+# WorkManager
+### Lateint Variable workmanager
+```java
+    lateinit var workmanager :WorkManager
+```
+### Constraints der das Laden der Batterie benötigt
+``` java
+    val constraints= Constraints.Builder().setRequiresCharging(true).build()
+```
+## OneTimeRequest
+```java
+ val request= OneTimeWorkRequestBuilder<WorkOneTimeRequest>().build()
+```
+## PeriodicalWorkRequest
+```java
+val request2= PeriodicWorkRequestBuilder<WorkPeriodical>(15,TimeUnit.MINUTES).build()
+```
+## Instance des WorkManagers erstellen
+```
 
