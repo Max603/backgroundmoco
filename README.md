@@ -130,6 +130,7 @@ val cases = ele.getString("cases7_per_100k_txt") // get cases
 # User Benachrichtigung das ein Helfer gefunden wurde
 ```java
      notify(ID, builder.build())
+     ID++
 ```
 
 
