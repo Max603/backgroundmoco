@@ -25,7 +25,6 @@ class MyServicesFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_my_services, container, false)
         val conbtn= root.findViewById<Button>(R.id.myservice_connection_button)
         conbtn.setOnClickListener() {
-
             /**
              * TODO: Erstellung eines Intents und Starten des Forground Services und Background Service
              **/

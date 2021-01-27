@@ -8,13 +8,12 @@ import android.os.IBinder
 import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.net.Socket
 import java.nio.charset.StandardCharsets
 import com.mocows.appworkshop.R
+import kotlinx.coroutines.*
 import kotlinx.coroutines.NonCancellable.cancel
 
 class MyService : Service() {
@@ -25,10 +24,10 @@ class MyService : Service() {
         //Forgroudservice Channel ID
         private const val ID = 99
 
-        //IP-Adresse des Servers in unserem Fall die des eigenen Geräts
         /**
-         * TODO: Eintragen der Server-IP Adresse und des Ports
-         **/
+         * TODO: Eintragen der Server IP und dem Port
+         */
+
 
         //Nachrichten Channel von myservice
         private const val CHANNEL_ID_MY_SERVICE="myservice"
@@ -53,9 +52,11 @@ class MyService : Service() {
                 .setAutoCancel(true)
                 .build()
 
-            /**
-            * TODO:Starten der Forground Service Benachrichtigung Erstellen der Client Server Kommuniktion und Ausführen der Benachrichtigung wenn ein Helfer gefunden wurde
-            **/
+
+        /**
+         * TODO: Starten des Forground Services und Aufbau der Kommunikation mit dem Server
+         */
+
         return START_NOT_STICKY
     }
 
@@ -68,8 +69,7 @@ class MyService : Service() {
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setAutoCancel(true)
         with(NotificationManagerCompat.from(this)) {
-            /**TODO: Benachrichten des Clients
-            **/
+            notify(ID,builder.build())
         }
     }
     //Erstellen des Notification Channels

@@ -15,13 +15,14 @@ class WorkPeriodical(context: Context,workerParams: WorkerParameters) : Worker(c
         private const val WORK_MANAGER_PERIODIC_CHANNEL_ID= "CHANNEL_ID_WORK_MANAGER_PERIODICAL"
         private const val WORK_MANAGER_PERIODICAL_CHANNEL_NAME="WORK_MANAGER_PERIODICAL"
         /**
-         * TODO: Erstellen der Variablen für den Qurantäne Counter und dem Stunden Counter
+         * TODO: Erstellen von zwei Variabeln für den Qurantänestatus und einem Counter
          */
     }
     override fun doWork(): Result {
         /**
-         * TODO: Erstellen der Benachrichtigungen für den Benutzer und Stopen des WorkManagers nach ABlauf der 14 Tage
+         * TODO: Erstellen von verschiedenen Benachrichtigungen und beenden des periodischen Events nach abgelaufener Zeit
          */
+
         return Result.success()
     }
 
