@@ -6,11 +6,12 @@ import android.content.Context
 import android.os.Build
 import android.util.Log
 import androidx.core.app.NotificationCompat
+import androidx.work.CoroutineWorker
 import androidx.work.Worker
 import androidx.work.WorkerParameters
 import com.mocows.appworkshop.R
 
-class WorkPeriodical(context: Context,workerParams: WorkerParameters) : Worker(context,workerParams){
+class WorkPeriodical(context: Context,workerParams: WorkerParameters) : CoroutineWorker(context,workerParams){
     companion object{
         private const val WORK_MANAGER_PERIODIC_CHANNEL_ID= "CHANNEL_ID_WORK_MANAGER_PERIODICAL"
         private const val WORK_MANAGER_PERIODICAL_CHANNEL_NAME="WORK_MANAGER_PERIODICAL"
@@ -18,7 +19,7 @@ class WorkPeriodical(context: Context,workerParams: WorkerParameters) : Worker(c
          * TODO: Erstellen von zwei Variabeln für den Qurantänestatus und einem Counter
          */
     }
-    override fun doWork(): Result {
+    override suspend fun doWork(): Result {
         /**
          * TODO: Erstellen von verschiedenen Benachrichtigungen und beenden des periodischen Events nach abgelaufener Zeit
          */
