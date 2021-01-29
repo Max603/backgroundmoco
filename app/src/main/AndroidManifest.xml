@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mocows.appworkshop">
 
-
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -13,7 +13,7 @@
         android:theme="@style/Theme.APPWORKSHOP">
 
 
-
+        <receiver android:name=".ui.Alarm.Alarm"/>
 
         <activity
             android:name=".MainActivity"
