@@ -15,7 +15,7 @@ import com.mocows.appworkshop.R
 import java.util.concurrent.TimeUnit
 
 
-class fragement_work : Fragment() {
+class WorkFragment : Fragment() {
     companion object{
         /**
          * TODO: Erstellen einer lateint Variable
