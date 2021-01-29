@@ -22,7 +22,7 @@ class MyService : Service() {
     companion object {
 
         //Forgroudservice Channel ID
-        private const val ID = 99
+        private var ID = 99
 
         /**
          * TODO: Eintragen der Server IP und dem Port
@@ -67,9 +67,9 @@ class MyService : Service() {
                 .setContentTitle("Helfer gefunden")
                 .setContentText("$string würde gerne ihren Einkauf erledigen")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                .setAutoCancel(true)
         with(NotificationManagerCompat.from(this)) {
             notify(ID,builder.build())
+            ID++
         }
     }
     //Erstellen des Notification Channels
