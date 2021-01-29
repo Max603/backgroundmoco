@@ -17,9 +17,8 @@ import java.util.concurrent.TimeUnit
 
 class WorkFragment : Fragment() {
     companion object{
-        /**
-         * TODO: Erstellen einer lateint Variable
-         */
+
+        lateinit var workmanager :WorkManager
 
     }
     private lateinit var workViewModel: WorkViewModel
@@ -33,27 +32,26 @@ class WorkFragment : Fragment() {
             ViewModelProvider(this).get(WorkViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_work, container, false)
 
+        //val constraints =Constraints.Builder().setRequiresCharging(true).build()
 
-        /**
-         *TODO: Erstellen der Requests für den OneTimeWorker und Periodical Worker
-         */
+        val request = OneTimeWorkRequestBuilder<WorkOneTimeRequest>()
+           // .setConstraints(constraints)
+            .build()
 
-        /**
-         * TODO: Erstellen der WorkManager Instanz
-         */
+        val request2 = PeriodicWorkRequestBuilder<WorkPeriodical>(12,TimeUnit.HOURS).build()
+
+        workmanager = WorkManager.getInstance(root.context)
+
 
         val btnonetime =root.findViewById<Button>(R.id.work_manager_button)
         val cancelbutton =root.findViewById<Button>(R.id.workmanagercancel_button)
         btnonetime.setOnClickListener {
-            /**
-             * TODO: Requests in die Warteschlange hinzufügen
-             */
+           workmanager.enqueue(request)
+            workmanager.enqueue(request2)
         }
 
         cancelbutton.setOnClickListener {
-            /**
-             * TODO: Beenden des Periodischen Events
-             */
+            workmanager.cancelAllWork()
         }
 
 

@@ -16,10 +16,7 @@ class WorkOneTimeRequest (context: Context, workerParams: WorkerParameters) : Co
         private const val WORK_MANAGER_CHANNEL_NAME="WORK_MANAGER"
     }
     override suspend fun doWork(): Result {
-        /**
-         * TODO: Erstellen der Benachrichtung das sich der Benutzer jetzt in Quarantäne befindet
-         */
-
+        createNotification("Einweisung in Quarantäne","Sie befinden sich ab sofort in Quarantäne")
         return Result.success()
     }
 

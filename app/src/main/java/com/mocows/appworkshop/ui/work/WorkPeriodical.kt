@@ -15,16 +15,27 @@ class WorkPeriodical(context: Context,workerParams: WorkerParameters) : Coroutin
     companion object{
         private const val WORK_MANAGER_PERIODIC_CHANNEL_ID= "CHANNEL_ID_WORK_MANAGER_PERIODICAL"
         private const val WORK_MANAGER_PERIODICAL_CHANNEL_NAME="WORK_MANAGER_PERIODICAL"
-        /**
-         * TODO: Erstellen von zwei Variabeln für den Qurantänestatus und einem Counter
-         */
+        var tageinquarantaene= 14
+        var counter =0
     }
     override suspend fun doWork(): Result {
-        /**
-         * TODO: Erstellen von verschiedenen Benachrichtigungen und beenden des periodischen Events nach abgelaufener Zeit
-         */
+        if(tageinquarantaene!=0){
+            createNotification("Qurantäne Status","Sie befinden sich noch $tageinquarantaene Tage in Qurantäne")
+        }else{
+            createNotification("Qurantäne Status","Sie befinden sich ab heute nicht mehr in Qurantäne")
+            tageinquarantaene=14
+            counter=0
+            WorkFragment.workmanager.cancelAllWork()
+        }
+        counter++
+        if(counter==1){
+            tageinquarantaene--
+            counter=0
+        }
 
+        Log.i("Qurantaenestatus","Noch in Qurantäne $tageinquarantaene")
         return Result.success()
+
     }
 
 

@@ -24,9 +24,10 @@ class MyService : Service() {
         //Forgroudservice Channel ID
         private var ID = 99
 
-        /**
-         * TODO: Eintragen der Server IP und dem Port
-         */
+        private val SERVER="t45xvxe1amipu7ef.myfritz.net"
+
+        private val PORT=8888
+
 
 
         //Nachrichten Channel von myservice
@@ -52,10 +53,36 @@ class MyService : Service() {
                 .setAutoCancel(true)
                 .build()
 
+        //startForeground(ID,notification)
 
-        /**
-         * TODO: Starten des Forground Services und Aufbau der Kommunikation mit dem Server
-         */
+        CoroutineScope(Dispatchers.IO).launch {
+                //delay(6000)
+            val mRun = true;
+            var charsRead = 0
+            var buffer = CharArray(BUFFERSIZE)
+            Log.e("TCP Client", "C: Connecting...");
+            //Erstellen des Socket mit der im Companion Objekt angelegten IP und dem Port
+            val socket = Socket(SERVER, PORT);
+            while (mRun) {
+                //Einlesen der gesendeten Daten vom C TCP-Server
+                val mBufferIn = BufferedReader(InputStreamReader(socket.getInputStream(), StandardCharsets.UTF_8));
+
+                charsRead = mBufferIn.read(buffer)
+                if(charsRead<0) continue
+                //Umwandeln der empfangenen Daten in einen String
+                val mServerMessage: String? = String(buffer).substring(0, charsRead)
+                buffer= CharArray(BUFFERSIZE)
+                if (mServerMessage != null)
+                    CoroutineScope(Dispatchers.IO).launch {
+                        //Ausführen der Notification das ein Helfer gefunden wurde, mit übergabe des Namens
+                        shownote(mServerMessage)
+                        Log.i("connectserver", mServerMessage)
+                    }
+
+            }
+
+        }
+
 
         return START_NOT_STICKY
     }
