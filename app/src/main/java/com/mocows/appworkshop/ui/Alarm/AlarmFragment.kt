@@ -31,8 +31,20 @@ class AlarmFragment : Fragment() {
     ): View? {
 
         val root = inflater.inflate(R.layout.fragment_alarm, container, false)
+        val alarmManager = root.context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val intent = Intent(root.context, Alarm::class.java)
+        val pendingIntent = PendingIntent.getBroadcast(         //create a Pending Intent (Broadcast Intent ) so the AlarmManager can execute my BroadcastReceiver
+                root.context.applicationContext, 234, intent, 0
+        )
+        val timer = root.findViewById<TimePicker>(R.id.timePicker1)
+        timer.setIs24HourView(true)
+        val startbtn = root.findViewById<Button>(R.id.startalarm)
 
+        startbtn.setOnClickListener {
+            Toast.makeText(root.context, "In  ${times(timer.hour,timer.minute) /1000 } sekunden klingelt es" , Toast.LENGTH_SHORT).show()
+            alarmManager[AlarmManager.RTC_WAKEUP, System.currentTimeMillis() +  times(timer.hour,timer.minute) ] = pendingIntent  //Alarm execuetes Pending Intent in 1000 milli second wich means 1 second from now
 
+        }
 
 
         return root
